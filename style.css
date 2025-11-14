@@ -1,0 +1,415 @@
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    background-color: #FFFBF2;
+    color: #43382B;
+    overflow-x: hidden;
+    cursor: none; /* Ocultar cursor por defecto para usar el personalizado */
+    min-height: 100vh;
+}
+
+/* Variables CSS para colores */
+:root {
+    --fondo-pagina: #FFFBF2;
+    --fondo-superficie: #FFFFFF;
+    --texto-principal: #43382B;
+    --texto-secundario: #8D7A61;
+    --exito: #34D399;
+    --alerta: #FBBF24;
+    
+    /* Colores por actividad */
+    --aventura1-lavanda: #A78BFA;
+    --aventura1-turquesa: #5EEAD4;
+    --aventura1-violeta: #8B5CF6;
+    --aventura1-cyan: #14B8A6;
+    
+    --burbujas-azul-cielo: #60A5FA;
+    --burbujas-rosa: #F472B6;
+    --burbujas-naranja: #FB923C;
+    --burbujas-azul-prim: #3B82F6;
+    
+    --clasif-rojo: #EF4444;
+    --clasif-amarillo: #FACC15;
+    --clasif-azul: #2563EB;
+    --clasif-verde: #10B981;
+    
+    --melodia-dorado: #F59E0B;
+    --melodia-rosa: #FB7185;
+    --melodia-ocre: #D97706;
+    --melodia-rosa-pastel: #F9A8D4;
+}
+
+/* Cursor personalizado */
+.cursor-personalizado {
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.1s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    background: var(--aventura1-violeta);
+}
+
+.cursor-click {
+    animation: clickAnim 200ms ease-out;
+}
+
+@keyframes clickAnim {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8); }
+    100% { transform: scale(1); }
+}
+
+/* Botones principales */
+.btn-principal {
+    min-height: 120px;
+    min-width: 240px;
+    padding: 32px;
+    background: var(--texto-principal);
+    color: white;
+    border: none;
+    border-radius: 32px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 16px 0 rgba(141, 122, 97, 0.15), 0 4px 8px 0 rgba(141, 122, 97, 0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-principal:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px 0 rgba(141, 122, 97, 0.20), 0 8px 16px 0 rgba(141, 122, 97, 0.15);
+}
+
+.btn-principal:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 4px 8px 0 rgba(141, 122, 97, 0.2);
+}
+
+/* Tarjetas de selección */
+.tarjeta-seleccion {
+    width: 250px;
+    height: 300px;
+    padding: 32px;
+    background: var(--fondo-superficie);
+    border-radius: 32px;
+    box-shadow: 0 8px 16px 0 rgba(141, 122, 97, 0.15), 0 4px 8px 0 rgba(141, 122, 97, 0.10);
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tarjeta-seleccion:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 16px 32px 0 rgba(141, 122, 97, 0.20), 0 8px 16px 0 rgba(141, 122, 97, 0.15);
+}
+
+.tarjeta-seleccion.seleccionada {
+    border: 8px solid var(--exito);
+}
+
+/* Layout principal */
+.contenedor {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.pantalla {
+    display: none;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 48px;
+}
+
+.pantalla.activa {
+    display: flex;
+}
+
+.titulo {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--texto-principal);
+}
+
+.subtitulo {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--texto-principal);
+}
+
+.instrucciones {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--texto-secundario);
+    max-width: 600px;
+}
+
+/* Navegación fija */
+.nav-fija {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.btn-nav {
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    transition: all 250ms ease;
+}
+
+.btn-nav:hover {
+    transform: scale(1.1);
+}
+
+/* Efecto especial para el botón estrella */
+.btn-nav[title*="inicio"]:hover {
+    transform: scale(1.2) rotate(15deg);
+    animation: brillarEstrella 1s ease-in-out infinite;
+}
+
+@keyframes brillarEstrella {
+    0%, 100% { 
+        filter: drop-shadow(0 0 0px #F59E0B);
+    }
+    50% { 
+        filter: drop-shadow(0 0 15px #F59E0B);
+    }
+}
+
+/* Avatares por edad */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    margin-bottom: 16px;
+    transition: transform 300ms ease;
+}
+
+.avatar.edad-3-4 {
+    background: var(--clasif-amarillo);
+}
+
+.avatar.edad-5-6 {
+    background: var(--burbujas-rosa);
+}
+
+.avatar.edad-7-8 {
+    background: var(--melodia-dorado);
+}
+
+.avatar.edad-9-10 {
+    background: var(--aventura1-cyan);
+}
+
+/* Lista de opciones */
+.lista-opciones {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Barra de progreso */
+.barra-progreso {
+    width: 400px;
+    height: 24px;
+    background: var(--fondo-pagina);
+    border: 2px solid var(--texto-secundario);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 24px 0;
+}
+
+.progreso-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--aventura1-lavanda), var(--aventura1-turquesa));
+    border-radius: 12px;
+    transition: width 500ms ease-out;
+    width: 0%;
+}
+
+/* Animaciones de celebración */
+.celebracion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    pointer-events: none;
+    z-index: 1000;
+    animation: celebracion 2000ms ease-out forwards;
+}
+
+@keyframes celebracion {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+/* Animales */
+.animal {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.animal:hover {
+    transform: scale(1.1);
+}
+
+/* Burbujas */
+.burbuja {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 200ms ease;
+    animation: flotar 3s ease-in-out infinite;
+}
+
+.burbuja:hover {
+    transform: scale(1.2);
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Elementos de clasificación */
+.elemento-clasif {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    cursor: pointer;
+    transition: all 300ms ease;
+    border: 3px dashed transparent;
+}
+
+.elemento-clasif:hover {
+    transform: scale(1.1);
+    border-color: var(--texto-secundario);
+}
+
+/* Notificaciones */
+.notificacion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--exito);
+    color: white;
+    padding: 24px 32px;
+    border-radius: 32px;
+    font-size: 24px;
+    font-weight: 600;
+    z-index: 1001;
+    animation: aparecer 300ms ease-out forwards;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Controles de audio */
+.audio-activado { color: var(--exito); }
+.audio-desactivado { color: var(--texto-secundario); }
+
+/* Animación shake */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .titulo { font-size: 36px; }
+    .subtitulo { font-size: 28px; }
+    .instrucciones { font-size: 20px; }
+    .btn-principal { 
+        min-width: 100%; 
+        margin: 0 24px;
+    }
+    .lista-opciones {
+        flex-direction: column;
+    }
+    .barra-progreso {
+        width: 300px;
+    }
+}
