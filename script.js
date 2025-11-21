@@ -149,10 +149,10 @@ function seleccionarEdad(edad) {
     
     // Mensaje personalizado por edad
     const mensajes = {
-        3: '¡Perfecto! Estás en modo principiante. Todo será muy sencillo.',
-        5: '¡Excelente! Estás en modo explorador. Aprenderás cosas nuevas.',
-        7: '¡Genial! Estás en modo aventurero. Será un gran desafío.',
-        9: '¡Increíble! Estás en modo experto. ¡Demuestra tu habilidad!'
+        3: '¿¡Qué tal!?. Aquí darás tus primeros pasos',
+        5: '¡Excelente!. ¡Aprenderás cosas nuevas!.',
+        7: '¡Genial! En este modo aventurero habrán varios desafíos.',
+        9: '¡Increíble!. Muéstranos tu gran habilidad en el modo experto'
     };
     
     hablar(mensajes[edad]);
