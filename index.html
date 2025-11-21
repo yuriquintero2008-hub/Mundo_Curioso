@@ -165,8 +165,13 @@
             font-weight: 600;
             line-height: 1.2;
             color: var(--texto-principal);
+            text-align: center;
+            margin: 40px 0 24px 0;
+            width: 100%;
+            display: block;
         }
 
+        
         .subtitulo {
             font-size: 32px;
             font-weight: 600;
@@ -219,10 +224,10 @@
 
         @keyframes brillarEstrella {
             0%, 100% { 
-                filter: drop-shadow(0 0 0px #F59E0B);
+                filter: drop-shadow(0 0 0px #fff568);
             }
             50% { 
-                filter: drop-shadow(0 0 15px #F59E0B);
+                filter: drop-shadow(0 0 15px #fff568);
             }
         }
 
@@ -631,7 +636,6 @@
                 utterance.volume = 0.8;
                 speechSynthesis.speak(utterance);
             }
-        }
 
         function toggleAudio() {
             audioActivado = !audioActivado;
